@@ -17,7 +17,28 @@ export class MapMainService {
             attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
         })
     }
+
   
+  }
+
+  setMap(divId: string) {
+    // Note that we can't set the map itself yet when constructing/initializing this service.  
+    // The dom is not ready yet, so call this from a component's 'ngOnInit()'. Something like:
+    // this.mapMainService.setMap("map-main"); 
+    
+    const map = L.map(divId, {
+        zoomControl: false,
+        center: L.latLng(54, 5),
+        zoom: 6,
+        layers: [this.baseMaps.OpenStreetMap]
+    });
+
+    L.control.zoom({ position: "topright" }).addTo(map);
+    L.control.layers(this.baseMaps).addTo(map);
+    L.control.scale().addTo(map);
+
+    this.map = map;
+
   }
     
 

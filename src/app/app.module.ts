@@ -1,15 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// components
-import { AppComponent } from './app.component';
-
 // services
 import { MapMainService } from './services/map/map-main.service';
 
+// components
+import { AppComponent } from './app.component';
+import { MapPanelLeftComponent } from './components/map-panel/map-panel-left/map-panel-left.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapPanelLeftComponent
   ],
   imports: [
     BrowserModule

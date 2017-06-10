@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+// components
+import { MapPanelLeftComponent } from './components/map-panel/map-panel-left/map-panel-left.component';
+
+// services
 import { MapMainService } from './services/map/map-main.service';
 
 @Component({
@@ -15,17 +19,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-        const map = L.map("map-main", {
-            zoomControl: false,
-            center: L.latLng(54, 5),
-            zoom: 6,
-            layers: [this.mapMainService.baseMaps.OpenStreetMap]
-        });
-
-        L.control.zoom({ position: "topright" }).addTo(map);
-        L.control.layers(this.mapMainService.baseMaps).addTo(map);
-        L.control.scale().addTo(map);
-
-        this.mapMainService.map = map;
+    // Div should be ready, so now we can finally construct the map.
+    this.mapMainService.setMap("map-main"); 
   }
+
 }
